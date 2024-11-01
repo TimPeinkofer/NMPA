@@ -25,7 +25,7 @@ def newton_raphson(x_0, f, df, tolerance=1e-9, max_iterations=200):
 
 
 
-def find_roots_in_grid(f, df, N=400, epsilon=1e-9, max_steps=200, x_range=(-2, 2), y_range=(-2, 2)): # Generating grid to plot
+def find_roots_in_grid(f, df, N=800, epsilon=1e-9, max_steps=200, x_range=(-2, 2), y_range=(-2, 2)): # Generating grid to plot
     x_values = np.linspace(x_range[0], x_range[1], N)
     y_values = np.linspace(y_range[0], y_range[1], N)
     
