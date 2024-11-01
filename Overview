@@ -1,1 +1,14 @@
 Overview of the document tree:
+
+Nonlinear Equations:
+-> Newton method
+-> Linear interpolations
+-> Convergence
+-> x = g(x)
+
+Fractals_
+-> Fractal Polynom
+-> Fractal z^3
+-> Fractal z^4
+-> Fractal z^7
+-> Mandelbrot Fractal
