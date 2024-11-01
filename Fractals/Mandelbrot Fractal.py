@@ -1,12 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def find_roots_in_grid(N=400, max_steps=200, x_range=(-2, 0.7), y_range=(-1.5, 1.2)):
+def mandelbrot(N=400, max_steps=200, x_range=(-2, 0.7), y_range=(-1.5, 1.2)):
     x_values = np.linspace(x_range[0], x_range[1], N)
     y_values = np.linspace(y_range[0], y_range[1], N)
     
-    mandelbrot_set = np.zeros((N, N), dtype=complex)  # Speicherung der komplexen Werte
-    iterations_grid = np.zeros((N, N))  # Speicherung der Anzahl der Iterationen
+    mandelbrot_set = np.zeros((N, N), dtype=complex)  # generate convergence grid
+    iterations_grid = np.zeros((N, N))  # Generate iteration grid
 
     for i, y in enumerate(y_values):
         for j, x in enumerate(x_values):
@@ -14,12 +14,12 @@ def find_roots_in_grid(N=400, max_steps=200, x_range=(-2, 0.7), y_range=(-1.5, 1
             z = 0
             iter_count = 0
 
-            # Mandelbrot-Iteration
+            # Calculating the Mandelbrot set components
             while abs(z) < 2 and iter_count < max_steps:
                 z = z**2 + c
                 iter_count += 1
             
-            # Speichere die Anzahl der Iterationen und den Endwert
+            # Save the results and the number of iterations
             mandelbrot_set[i, j] = z
             iterations_grid[i, j] = iter_count
 
@@ -47,6 +47,6 @@ def plot_log_iterations(iterations_grid, x_range=(-2, 0.7), y_range=(-1.5, 1.2))
 
 
 if __name__ == "__main__":
-    grid_roots, iterations_grid = find_roots_in_grid()
+    grid_roots, iterations_grid = mandelbrot()
     plot_imaginary_part(grid_roots)
     plot_log_iterations(iterations_grid)
