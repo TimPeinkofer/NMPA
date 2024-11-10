@@ -55,20 +55,11 @@ def pivoting(m, v):
     
     return U_Matrix, U_vector
 
-def solver(mat, vec):  # Solver from our first program (a little bit modified)
-    for i in range(rows - 1, -1, -1):
-        b_new = vec[i] / mat[i, i]
-        
-        for r in range(i + 1, rows):
-            b_new -= mat[i, r] * x[r] / mat[i, i]
-        
-        x[i] = b_new
-    return x
 
 # Get the triangular matrix and solve the linear equation
 m, v = gauss()
 m, v = pivoting(m, v)
-solution = solver(m, v)
+solution = v
 
 print("Modified Matrix generated via Pivoting:")
 print(m)
