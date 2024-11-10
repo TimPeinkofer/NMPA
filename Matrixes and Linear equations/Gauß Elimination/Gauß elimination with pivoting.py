@@ -4,7 +4,7 @@ import numpy as np
 matrix = np.array([[1, 1, 0], [2 ,2, -2], [0, 3, 15]], dtype=np.float64)
 vector = np.array([1, -2, 33], dtype=np.float64).reshape(-1, 1)
 
-print("Original Matrix:") # print the original matrix as a reference
+print("Original Matrix:")  # print the original matrix as a reference
 print(matrix)
 print("Original Vector:")
 print(vector)
@@ -12,14 +12,13 @@ print(vector)
 # Get dimensions of our matrix for later use
 rows, columns = matrix.shape
 
-# Generate a copy of the vector and the matrix for our gauß algorithm
+# Generate a copy of the vector and the matrix for our Gaussian elimination algorithm
 U_Matrix = np.copy(matrix)
 U_vector = np.copy(vector)
-x = np.zeros((rows, 1)) # Generate a solution vektor based on the number of rows of our matrix
+x = np.zeros((rows, 1))  # Generate a solution vector based on the number of rows of our matrix
 
 def gauss():
     for i in range(rows - 1):
-
         if U_Matrix[i][i] == 0:
             for k in range(i + 1, rows):
                 if U_Matrix[k][i] != 0:
@@ -27,29 +26,36 @@ def gauss():
                     U_Matrix[[i, k]] = U_Matrix[[k, i]]
                     U_vector[[i, k]] = U_vector[[k, i]]
                     break
-        
+
         # Continue with elimination if a_ii != 0
         for j in range(i + 1, rows):
             if U_Matrix[i][i] != 0:
-                factor = U_Matrix[j][i] / U_Matrix[i][i] #Calculate the factor
+                factor = U_Matrix[j][i] / U_Matrix[i][i]  # Calculate the factor
+                U_Matrix[j] -= factor * U_Matrix[i]
+                U_vector[j] -= factor * U_vector[i]
+
+    return U_Matrix, U_vector
+
+def pivoting(m, v):
+    U_Matrix = m
+    U_vector = v
+    for i in range(rows - 1, -1, -1):  
+        if U_Matrix[i][i] != 0:
+            # Normalize the pivots if a_ii != 0
+            factor = U_Matrix[i][i]
+            U_Matrix[i] /= factor #both vector and matrix!
+            U_vector[i] /= factor
+        
+        # Get the matrix with only pivots
+        for j in range(i - 1, -1, -1):
+            if U_Matrix[j][i] != 0:
+                factor = U_Matrix[j][i]
                 U_Matrix[j] -= factor * U_Matrix[i]
                 U_vector[j] -= factor * U_vector[i]
     
-    for i in range(rows):
-        index = rows - i-1
-        # claculate the diagonal matrix for pivoting
-        for j in range(index):
-            if U_Matrix[index][index] != 0:
-                factor = U_Matrix[j][index] / U_Matrix[index][index] #Calculate the factor
-                U_Matrix[j] -= factor * U_Matrix[index]
-                U_vector[j] -= factor * U_vector[index]
-        
-        if U_Matrix[index][index] != 0: # Normalize the pivots if a_ii != 0
-            U_Matrix[index] =  U_Matrix[index]/U_Matrix[index][index] 
-        
     return U_Matrix, U_vector
 
-def solver(mat, vec): #Solver from our first program (a little bit modified)
+def solver(mat, vec):  # Solver from our first program (a little bit modified)
     for i in range(rows - 1, -1, -1):
         b_new = vec[i] / mat[i, i]
         
@@ -61,9 +67,10 @@ def solver(mat, vec): #Solver from our first program (a little bit modified)
 
 # Get the triangular matrix and solve the linear equation
 m, v = gauss()
+m, v = pivoting(m, v)
 solution = solver(m, v)
 
 print("Modified Matrix generated via Pivoting:")
 print(m)
 print("Solution Vector:")
-print(solution) 
+print(solution)
