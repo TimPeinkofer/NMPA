@@ -18,7 +18,7 @@ def gauss(): # Function for gauß elimination
     # Generate a copy of the vector and the matrix for our gauß algorithm
     U_Matrix = np.copy(matrix)
     U_vector = np.copy(vector)
-    x = np.zeros((rows, 1)) # Generate a solution vektor based on the number of rows of our matrix
+    
     
     for i in range(rows - 1):
 
@@ -39,6 +39,7 @@ def gauss(): # Function for gauß elimination
     return U_Matrix, U_vector
 
 def solver(mat, vec): # Solver from our first program (a little bit modified)
+    x = np.zeros((rows, 1)) # Generate a solution vektor based on the number of rows of our matrix
     for i in range(rows):
         index = rows - i - 1
         b_new = vec[index] / mat[index, index]
