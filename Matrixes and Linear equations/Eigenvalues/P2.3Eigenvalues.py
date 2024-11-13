@@ -18,7 +18,7 @@ def Eigenvalue(mat,vec, Iteration):
     for i in range(Iteration):
         vec = matrix_vector(size, mat, vec)
     eigenvalue = vec / np.dot(vec, vec)
-    eigenvector = vec
+    eigenvector = vec / np.linalg.norm(vec)
     return eigenvalue,eigenvector
 
 
