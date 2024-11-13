@@ -12,12 +12,14 @@ print(vector)
 # Get dimensions of our matrix for later use
 rows, columns = matrix.shape
 
-# Generate a copy of the vector and the matrix for our gauß algorithm
-U_Matrix = np.copy(matrix)
-U_vector = np.copy(vector)
-x = np.zeros((rows, 1)) # Generate a solution vektor based on the number of rows of our matrix
 
 def gauss(): # Function for gauß elimination
+    
+    # Generate a copy of the vector and the matrix for our gauß algorithm
+    U_Matrix = np.copy(matrix)
+    U_vector = np.copy(vector)
+    x = np.zeros((rows, 1)) # Generate a solution vektor based on the number of rows of our matrix
+    
     for i in range(rows - 1):
 
         if U_Matrix[i][i] == 0:
