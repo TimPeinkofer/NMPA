@@ -20,4 +20,8 @@ Matrixes and Linear equations
 -> MatrixVectorMultiplikation
 
 Interpolation and Linear Approximation
--> Gauß Method for linear approximation
+-> Linear Approximation
+  -> Gauß Method for linear approximation
+
+Numerical Differentiation:
+-> Week Assignment 5
