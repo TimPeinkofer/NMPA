@@ -23,5 +23,11 @@ Interpolation and Linear Approximation
 -> Linear Approximation
   -> Gauß Method for linear approximation
 
+
 Numerical Differentiation:
 -> Week Assignment 5
+
+Numerical Integration
+-> Simpson 1/3
+-> Romberg with Simpson 1/3
+-> Gauss-Legendre
