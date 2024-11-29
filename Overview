@@ -29,6 +29,6 @@ Numerical Differentiation:
 
 Numerical Integration
 -> Simpson 1/3
--> Romberg with Simpson 1/3
+-> Romberg with Simpson
 -> Gauss-Legendre
 -> Multiply Integrals
