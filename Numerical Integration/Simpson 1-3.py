@@ -29,7 +29,7 @@ indices = [300, 600]
 
 
 for i, index in enumerate(indices):
-    x = np.linspace(1, 2, index)  
+    x = np.linspace(1, np.pi, index)  
     f_x = [func(x_i) for x_i in x]  
     h = (x[-1] - x[0]) / (len(x) - 1)  # Calculate step size for our iteration
     sol[i] = Simpson(h, f_x, x)  
