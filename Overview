@@ -22,6 +22,8 @@ Matrixes and Linear equations
 Interpolation and Linear Approximation
 -> Linear Approximation
   -> Gauß Method for linear approximation
+-> Polynomial Interpolation - Hydrodynamics
+  -> EoS
 
 
 Numerical Differentiation:
