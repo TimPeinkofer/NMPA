@@ -20,9 +20,9 @@ Matrixes and Linear equations
 -> MatrixVectorMultiplikation
 
 Interpolation and Linear Approximation
--> Linear Approximation
+-> Polynomial Approximation
   -> Gauß Method for linear approximation
--> Polynomial Interpolation - Hydrodynamics
+-> Interpolation - Hydrodynamics
   -> EoS
 
 
