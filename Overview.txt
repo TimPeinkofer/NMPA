@@ -31,6 +31,11 @@ Numerical Differentiation:
 
 Numerical Integration
 -> Quantum Mechanics Application
+  -> Array_filling
+  -> Newton_cotes
+  -> Testing_1
+  -> Testing_2_wavefunction
+  -> Testing_3_2s hydrogen atom
 -> Simpson 1/3
 -> Romberg with Simpson
 -> Gauss-Legendre
