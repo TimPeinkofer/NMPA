@@ -30,8 +30,8 @@ def array_filling(h, a, b, func, array, n, t):
     return array
 
 # Newton-Cotes function
-def Newton_cotes(n, x, f):
-    h = (x[-1] - x[0]) / (n - 1)  # Calculating the step size h
+def Newton_cotes(n, a,b, f):
+    h = (b - a) / (n - 1)  # Calculating the step size h
     sum_integral = 0
 
     for i in range(0, n - 2, 2):  # Calculating the value for every odd step
@@ -49,7 +49,7 @@ for t in time_steps:# Calculate the values for every time
     arr_c = [0] * 10000
     h = (interval_b - interval_a) / (10000 - 1)
     check_arr = array_filling(h, interval_a, interval_b, probability, arr_c, 10000, t) #Calculate comparison values for error calculation
-    check_int = Newton_cotes(10000, arr_c, check_arr)
+    check_int = Newton_cotes(10000, interval_a, interval_b, check_arr)
     print(f"t = {t}")
     print("\n")
 
@@ -62,7 +62,7 @@ for t in time_steps:# Calculate the values for every time
         array_filled = array_filling(h, interval_a, interval_b, probability, arr, n, t)
 
         # Integrate using Newton Cotes 
-        integral_result = Newton_cotes(n, arr, array_filled)
+        integral_result = Newton_cotes(n, interval_a,interval_b, array_filled)
         error = np.abs(integral_result - check_int)
         
         results.append((n, np.log(h), np.log(error)))
