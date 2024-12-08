@@ -1,9 +1,9 @@
 import numpy as np
 
 
-def Newton_cotes(n, f):
+def Newton_cotes(n,x, f):
 
-    h = (f[-1] - f[0]) / (n - 1)  # Calculating the stepsize h
+    h = (x[-1] - x[0]) / (n - 1)  # Calculating the stepsize h
     sum_integral = 0
 
     for i in range(0, n - 2, 2):  # Calculating the value for every odd step
@@ -28,8 +28,8 @@ x_2 = np.linspace(0, 2, n_2)
 f_2 = [func(x_i) for x_i in x_2]
 
 # Integration for two differen n to get the error of our integration
-result_1 = Newton_cotes(n_1, f)  
-result_2 = Newton_cotes(n_2, f_2) 
+result_1 = Newton_cotes(n_1,x, f)  
+result_2 = Newton_cotes(n_2,x_2, f_2) 
 err = np.abs(result_1 - result_2)
 
 # Ergebnisse ausgeben
