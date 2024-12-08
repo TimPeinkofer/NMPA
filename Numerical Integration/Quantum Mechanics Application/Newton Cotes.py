@@ -27,7 +27,7 @@ f = [func(x_i) for x_i in x]
 x_2 = np.linspace(0, 2, n_2)
 f_2 = [func(x_i) for x_i in x_2]
 
-# Integration for two differen n to get the error of our integration
+# Integration for two different n to get the error of our integration
 result_1 = Newton_cotes(n_1,x, f)  
 result_2 = Newton_cotes(n_2,x_2, f_2) 
 err = np.abs(result_1 - result_2)
