@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-#calcluta de two values of the given functions
+#define the two functions
 def Fy(x, y, z):
     yprime = np.sin(y) + np.cos(z * x)
     return yprime
