@@ -48,12 +48,14 @@ Numerical Integration
 ODE
 -> 1st-order ODE
   -> Runge Kutta_4th_order
+  -> P4Heun
+  -> P4Adam
 -> Applications
-  -> Adams_multon.py
-  -> Decreasing of mu_0.py
-  -> Error_evaluation.py
-  -> N_of_Evaluations.py
-  -> Runge_Kutta_Task_2.py
-  -> Variation of w_0.py
+  -> Adams_multon
+  -> Decreasing of mu_0
+  -> Error_evaluation
+  -> N_of_Evaluations
+  -> Runge_Kutta_Task_2
+  -> Variation of w_0
 -> System of ODEs
-  -> P4-2SystemofODEs.py
+  -> P4-2SystemofODEs
