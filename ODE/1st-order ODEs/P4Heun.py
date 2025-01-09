@@ -7,7 +7,7 @@ def Fprime(x, y):
     #yprime = y * np.cos(x + y)
     return yprime
 
-def Adam(x0,xm,y0,n,f):
+def Heun(x0,xm,y0,n,f):
   h=(xm-x0)/n
   x=np.arange(x0,xm+h,h)
   y=np.zeros(len(x))
