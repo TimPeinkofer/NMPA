@@ -1,12 +1,11 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
-# Define the ODE
-def ode(t, y):
-    
-    # I defined y the following: y[0] = u, y[1] = u'
-
+# Define the ODE system
+def ode(x, y):
+    # We have defined the ODE the following: y[0] = u, y[1] = u'
     dy0 = y[1]
-    dy1 = (1+ y[0]**2)*y[0]/(1+y[0]**2)
+    dy1 = (1 - x / 5) * y[0] + x
     return np.array([dy0, dy1])
 
 # Linear interpolation for root finding (based on the method we discussed in class)
@@ -15,20 +14,41 @@ def linear_interpol(f, a, b, tol=1e-6, max_iter=1000):
     if f(a) * f(b) > 0:
         raise ValueError("No root in interval")
 
-    for i in range(max_iter):
+    iterations = []  # To store intermediate solutions (c values)
+
+    for i in range(max_iter):  # Maximum 1000 iterations
+        print(f"Iteration {i+1}: a = {a}, b = {b}")
+
+        if abs(f(b) - f(a)) < 1e-12:  # Avoid division by zero
+            raise ValueError("Function values too close; division by zero.")
+        
         c = a - f(a) * (b - a) / (f(b) - f(a))
-        print(f"c = {c}, f(c) = {f(c)}")
-        if abs(f(c)) < tol:
-            print (f"Root found after {i+1} iterations")
-            return c
+
+        iterations.append(c)  # Save the current value of c
+
+        if abs(f(c)) < tol:  # Tolerance for convergence
+            print(f"Root found after {i + 1} iterations.")
+            break
 
         if f(c) * f(a) < 0:
             b = c
         else:
             a = c
+    else:
+        print("Maximum iterations reached.")
 
-    print("Maximum iterations reached")
-    return None
+    
+    for idx, v in enumerate(iterations):
+        y_0 = [u_1, v]
+        t_values, y_values = runge_kutta(ode, y_0, x_1, x_2, n)
+        plt.plot(t_values, y_values[:, 0], label=f"Iteration {idx + 1}")
+
+    plt.xlabel("x")
+    plt.ylabel("u(x)")
+    plt.title("Solutions at Each Iteration of Root Finder")
+    plt.legend()
+    plt.show()
+    return c
 
 # 4th Order Runge-Kutta method
 def runge_kutta(f, y_0, t_start, t_end, n):
@@ -72,14 +92,11 @@ def solve_by_shooting(ode, x_1, x_2, n, v_0, u_1, u_2):
     x, y = runge_kutta(ode, y_0, x_1, x_2, n)
     return v_corr, x, y
 
-
-
 # Parameters
-
-x_1, x_2 = 0,1
+x_1, x_2 = 1, 3
 n = 1000
-u_1, u_2 = 0,0.9
-v_0 = [-50, 500]
+u_1, u_2 = 2, -1
+v_0 = [-10, 10]
 
 # Solve the BVP
 v, x, y = solve_by_shooting(ode, x_1, x_2, n, v_0, u_1, u_2)
@@ -87,4 +104,3 @@ v, x, y = solve_by_shooting(ode, x_1, x_2, n, v_0, u_1, u_2)
 print(f"Corrected initial slope u'(x1) = {v}")
 print(f"Solution at x2: {y[-1, 0]}")
 print(f'Error for x2: {y[-1, 0] - u_2}')
-
