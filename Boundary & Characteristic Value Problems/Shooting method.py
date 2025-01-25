@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 def ode(x, y):
     # We have defined the ODE the following: y[0] = u, y[1] = u'
     dy0 = y[1]
-    dy1 = (1 - x / 5) * y[0] + x
+    dy1 = 2*y[0]
     return np.array([dy0, dy1])
 
 # Linear interpolation for root finding (based on the method we discussed in class)
@@ -37,7 +37,6 @@ def linear_interpol(f, a, b, tol=1e-6, max_iter=1000):
     else:
         print("Maximum iterations reached.")
 
-    
     for idx, v in enumerate(iterations):
         y_0 = [u_1, v]
         t_values, y_values = runge_kutta(ode, y_0, x_1, x_2, n)
@@ -93,9 +92,9 @@ def solve_by_shooting(ode, x_1, x_2, n, v_0, u_1, u_2):
     return v_corr, x, y
 
 # Parameters
-x_1, x_2 = 1, 3
+x_1, x_2 = 0, 1
 n = 1000
-u_1, u_2 = 2, -1
+u_1, u_2 = 1.2,0.9
 v_0 = [-10, 10]
 
 # Solve the BVP
@@ -105,6 +104,7 @@ print(f"Corrected initial slope u'(x1) = {v}")
 print(f"Solution at x2: {y[-1, 0]}")
 print(f'Error for x2: {y[-1, 0] - u_2}')
 
+# Plot the final solution
 plt.plot(x, y[:, 0], label="Final Solution (u(x))", color="blue")
 plt.xlabel("x")
 plt.ylabel("u(x)")
