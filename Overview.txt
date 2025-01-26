@@ -1,5 +1,9 @@
 Overview of the document tree:
 
+
+Boundary & Characteristic Value Problems:
+
+
 Nonlinear Equations:
 -> Newton method
 -> Linear interpolations
@@ -57,5 +61,10 @@ ODE
   -> N_of_Evaluations
   -> Runge_Kutta_Task_2
   -> Variation of w_0
+-> Applied Problems
+	-> Pendulum higher Oszillation
+	-> Double Pendulum
+	-> Damped harmonic Oszillator
+	-> Predator-Prey
 -> System of ODEs
   -> P4-2SystemofODEs
