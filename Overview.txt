@@ -2,7 +2,12 @@ Overview of the document tree:
 
 
 Boundary & Characteristic Value Problems:
-
+-> Theoretical problems
+	-> Shooting method
+	-> p9Matrix
+-> Applied Problems
+	-> fluidsphere_Master
+	-> fluidsphere_Lame_Emden
 
 Nonlinear Equations:
 -> Newton method
@@ -31,7 +36,10 @@ Interpolation and Linear Approximation
 
 
 Numerical Differentiation:
--> Week Assignment 5
+-> Theoretical excercises
+-> Central_Differences
+-> Cubic_splines
+-> Richardson
 
 Numerical Integration
 -> Quantum Mechanics Application
@@ -66,5 +74,8 @@ ODE
 	-> Double Pendulum
 	-> Damped harmonic Oszillator
 	-> Predator-Prey
+	-> TOV
+	-> Lorentz equations
+	-> Lorentz attractor
 -> System of ODEs
   -> P4-2SystemofODEs
